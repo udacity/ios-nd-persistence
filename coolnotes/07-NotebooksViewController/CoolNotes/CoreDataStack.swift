@@ -103,6 +103,27 @@ extension CoreDataStack {
             try context.save()
         }
     }
+    
+    func autoSave(delayInSeconds : Int){
+        
+        if delayInSeconds > 0 {
+            do{
+                try saveContext()
+                print("Autosaving")
+            }catch{
+                print("Error while autosaving")
+            }
+            
+            
+            let delayInNanoSeconds = UInt64(delayInSeconds) * NSEC_PER_SEC
+            let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delayInNanoSeconds))
+            
+            dispatch_after(time, dispatch_get_main_queue(), {
+                self.autoSave(delayInSeconds)
+            })
+            
+        }
+    }
 }
 
 

@@ -1,6 +1,6 @@
 //
 //  CoreDataTableViewController.swift
-//
+//  Tricorder
 //
 //  Created by Fernando Rodríguez Romero on 22/02/16.
 //  Copyright © 2016 udacity.com. All rights reserved.
@@ -23,11 +23,11 @@ class CoreDataTableViewController: UITableViewController {
     }
     
     init(fetchedResultsController fc : NSFetchedResultsController,
-        style : UITableViewStyle = .Plain){
-            fetchedResultsController = fc
-            super.init(style: style)
-            
-            
+    style : UITableViewStyle = .Plain){
+        fetchedResultsController = fc
+        super.init(style: style)
+        
+        
     }
     
     // Do not worry about this initializer. I has to be implemented
@@ -94,7 +94,6 @@ extension CoreDataTableViewController{
         }
     }
     
-    
 }
 
 // MARK:  - Fetches
@@ -121,52 +120,53 @@ extension CoreDataTableViewController: NSFetchedResultsControllerDelegate{
     }
     
     func controller(controller: NSFetchedResultsController,
-        didChangeSection sectionInfo: NSFetchedResultsSectionInfo,
-        atIndex sectionIndex: Int,
-        forChangeType type: NSFetchedResultsChangeType) {
+         didChangeSection sectionInfo: NSFetchedResultsSectionInfo,
+                          atIndex sectionIndex: Int,
+                                  forChangeType type: NSFetchedResultsChangeType) {
+        
+        let set = NSIndexSet(index: sectionIndex)
+        
+        switch (type){
             
-            let set = NSIndexSet(index: sectionIndex)
+        case .Insert:
+            tableView.insertSections(set, withRowAnimation: .Fade)
             
-            switch (type){
-                
-            case .Insert:
-                tableView.insertSections(set, withRowAnimation: .Fade)
-                
-            case .Delete:
-                tableView.deleteSections(set, withRowAnimation: .Fade)
-                
-            default:
-                // irrelevant in our case
-                break
-                
-            }
+        case .Delete:
+            tableView.deleteSections(set, withRowAnimation: .Fade)
+            
+        default:
+            // irrelevant in our case
+            break
+            
+        }
     }
     
     
     func controller(controller: NSFetchedResultsController,
-        didChangeObject anObject: AnyObject,
-        atIndexPath indexPath: NSIndexPath?,
-        forChangeType type: NSFetchedResultsChangeType,
-        newIndexPath: NSIndexPath?) {
+         didChangeObject anObject: AnyObject,
+                         atIndexPath indexPath: NSIndexPath?,
+                                     forChangeType type: NSFetchedResultsChangeType,
+                                                   newIndexPath: NSIndexPath?) {
+        
+        guard let newIndexPath = newIndexPath else{
+            fatalError("No indexPath received")
+        }
+        switch(type){
             
+        case .Insert:
+            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
             
+        case .Delete:
+            tableView.deleteRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
             
-            switch(type){
-                
-            case .Insert:
-                tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
-                
-            case .Delete:
-                tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-                
-            case .Update:
-                tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-                
-            case .Move:
-                tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-                tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
-            }
+        case .Update:
+            tableView.reloadRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
             
+        case .Move:
+            tableView.deleteRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+        }
+        
     }
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
