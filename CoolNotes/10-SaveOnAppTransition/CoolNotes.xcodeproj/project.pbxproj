@@ -12,7 +12,6 @@
 		ED9E071D1C90F369004C22C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9E071C1C90F369004C22C1 /* ViewController.swift */; };
 		ED9E07201C90F369004C22C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED9E071E1C90F369004C22C1 /* Main.storyboard */; };
 		ED9E07221C90F369004C22C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED9E07211C90F369004C22C1 /* Assets.xcassets */; };
-		ED9E07301C90F369004C22C1 /* CoolNotesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9E072F1C90F369004C22C1 /* CoolNotesTests.swift */; };
 		EDFD7F061C910470004EE292 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EDFD7F041C910470004EE292 /* Model.xcdatamodeld */; };
 		EDFD7F0B1C91FEBB004EE292 /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD7F071C91FEBB004EE292 /* Note+CoreDataProperties.swift */; };
 		EDFD7F0C1C91FEBB004EE292 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD7F081C91FEBB004EE292 /* Note.swift */; };
@@ -26,16 +25,6 @@
 		EDFD7F1F1C938ABD004EE292 /* note.png in Resources */ = {isa = PBXBuildFile; fileRef = EDFD7F1E1C938ABD004EE292 /* note.png */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		ED9E072C1C90F369004C22C1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = ED9E070F1C90F369004C22C1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = ED9E07161C90F369004C22C1;
-			remoteInfo = CoolNotes;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		A934F3ED1D36A67A000625CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		ED9E07171C90F369004C22C1 /* CoolNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoolNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,9 +33,6 @@
 		ED9E071F1C90F369004C22C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ED9E07211C90F369004C22C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED9E07261C90F369004C22C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ED9E072B1C90F369004C22C1 /* CoolNotesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoolNotesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		ED9E072F1C90F369004C22C1 /* CoolNotesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoolNotesTests.swift; sourceTree = "<group>"; };
-		ED9E07311C90F369004C22C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EDFD7F051C910470004EE292 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		EDFD7F071C91FEBB004EE292 /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		EDFD7F081C91FEBB004EE292 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
@@ -62,13 +48,6 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		ED9E07141C90F369004C22C1 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		ED9E07281C90F369004C22C1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -100,7 +79,6 @@
 			isa = PBXGroup;
 			children = (
 				ED9E07191C90F369004C22C1 /* CoolNotes */,
-				ED9E072E1C90F369004C22C1 /* CoolNotesTests */,
 				ED9E07181C90F369004C22C1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -109,7 +87,6 @@
 			isa = PBXGroup;
 			children = (
 				ED9E07171C90F369004C22C1 /* CoolNotes.app */,
-				ED9E072B1C90F369004C22C1 /* CoolNotesTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -126,15 +103,6 @@
 				A934F3F01D36A685000625CA /* Supporting Files */,
 			);
 			path = CoolNotes;
-			sourceTree = "<group>";
-		};
-		ED9E072E1C90F369004C22C1 /* CoolNotesTests */ = {
-			isa = PBXGroup;
-			children = (
-				ED9E072F1C90F369004C22C1 /* CoolNotesTests.swift */,
-				ED9E07311C90F369004C22C1 /* Info.plist */,
-			);
-			path = CoolNotesTests;
 			sourceTree = "<group>";
 		};
 		EDFD7F0F1C91FEC1004EE292 /* Models */ = {
@@ -190,24 +158,6 @@
 			productReference = ED9E07171C90F369004C22C1 /* CoolNotes.app */;
 			productType = "com.apple.product-type.application";
 		};
-		ED9E072A1C90F369004C22C1 /* CoolNotesTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = ED9E07371C90F36A004C22C1 /* Build configuration list for PBXNativeTarget "CoolNotesTests" */;
-			buildPhases = (
-				ED9E07271C90F369004C22C1 /* Sources */,
-				ED9E07281C90F369004C22C1 /* Frameworks */,
-				ED9E07291C90F369004C22C1 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				ED9E072D1C90F369004C22C1 /* PBXTargetDependency */,
-			);
-			name = CoolNotesTests;
-			productName = CoolNotesTests;
-			productReference = ED9E072B1C90F369004C22C1 /* CoolNotesTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -220,10 +170,6 @@
 				TargetAttributes = {
 					ED9E07161C90F369004C22C1 = {
 						CreatedOnToolsVersion = 7.3;
-					};
-					ED9E072A1C90F369004C22C1 = {
-						CreatedOnToolsVersion = 7.3;
-						TestTargetID = ED9E07161C90F369004C22C1;
 					};
 				};
 			};
@@ -241,7 +187,6 @@
 			projectRoot = "";
 			targets = (
 				ED9E07161C90F369004C22C1 /* CoolNotes */,
-				ED9E072A1C90F369004C22C1 /* CoolNotesTests */,
 			);
 		};
 /* End PBXProject section */
@@ -256,13 +201,6 @@
 				EDFD7F1F1C938ABD004EE292 /* note.png in Resources */,
 				ED9E07221C90F369004C22C1 /* Assets.xcassets in Resources */,
 				ED9E07201C90F369004C22C1 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		ED9E07291C90F369004C22C1 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,23 +225,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		ED9E07271C90F369004C22C1 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				ED9E07301C90F369004C22C1 /* CoolNotesTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		ED9E072D1C90F369004C22C1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = ED9E07161C90F369004C22C1 /* CoolNotes */;
-			targetProxy = ED9E072C1C90F369004C22C1 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		A934F3EC1D36A67A000625CA /* LaunchScreen.xib */ = {
@@ -430,30 +352,6 @@
 			};
 			name = Release;
 		};
-		ED9E07381C90F36A004C22C1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = CoolNotesTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.udacity.CoolNotesTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoolNotes.app/CoolNotes";
-			};
-			name = Debug;
-		};
-		ED9E07391C90F36A004C22C1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = CoolNotesTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.udacity.CoolNotesTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoolNotes.app/CoolNotes";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -471,15 +369,6 @@
 			buildConfigurations = (
 				ED9E07351C90F369004C22C1 /* Debug */,
 				ED9E07361C90F369004C22C1 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		ED9E07371C90F36A004C22C1 /* Build configuration list for PBXNativeTarget "CoolNotesTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				ED9E07381C90F36A004C22C1 /* Debug */,
-				ED9E07391C90F36A004C22C1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
