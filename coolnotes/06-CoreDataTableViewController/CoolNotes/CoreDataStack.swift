@@ -13,22 +13,22 @@ struct CoreDataStack {
     // MARK:  - Properties
     private let model : NSManagedObjectModel
     private let coordinator : NSPersistentStoreCoordinator
-    private let modelURL : URL
-    private let dbURL : URL
+    private let modelURL : NSURL
+    private let dbURL : NSURL
     let context : NSManagedObjectContext
     
     // MARK:  - Initializers
     init?(modelName: String){
         
         // Assumes the model is in the main bundle
-        guard let modelURL = Bundle.main().urlForResource(modelName, withExtension: "momd") else {
+        guard let modelURL = NSBundle.mainBundle().URLForResource(modelName, withExtension: "momd") else {
             print("Unable to find \(modelName)in the main bundle")
             return nil}
         
         self.modelURL = modelURL
         
         // Try to create the model from the URL
-        guard let model = NSManagedObjectModel(contentsOf: modelURL) else{
+        guard let model = NSManagedObjectModel(contentsOfURL: modelURL) else{
             print("unable to create a model from \(modelURL)")
             return nil
         }
@@ -40,20 +40,20 @@ struct CoreDataStack {
         coordinator = NSPersistentStoreCoordinator(managedObjectModel: model)
         
         // create a context and add connect it to the coordinator
-        context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+        context = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
         context.persistentStoreCoordinator = coordinator
         
         
         
         // Add a SQLite store located in the documents folder
-        let fm = FileManager.default()
+        let fm = NSFileManager.defaultManager()
         
-        guard let  docUrl = fm.urlsForDirectory(.documentDirectory, inDomains: .userDomainMask).first else{
+        guard let  docUrl = fm.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first else{
             print("Unable to reach the documents folder")
             return nil
         }
         
-        self.dbURL = try! docUrl.appendingPathComponent("model.sqlite")
+        self.dbURL = docUrl.URLByAppendingPathComponent("model.sqlite")
         
 
         do{
@@ -70,12 +70,12 @@ struct CoreDataStack {
     }
     
     // MARK:  - Utils
-    func addStoreCoordinator(_ storeType: String,
+    func addStoreCoordinator(storeType: String,
                              configuration: String?,
-                             storeURL: URL,
+                             storeURL: NSURL,
                              options : [NSObject : AnyObject]?) throws{
         
-        try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: dbURL, options: nil)
+        try coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: dbURL, options: nil)
         
     }
 }
@@ -87,7 +87,7 @@ extension CoreDataStack  {
     func dropAllData() throws{
         // delete all the objects in the db. This won't delete the files, it will
         // just leave empty tables.
-        try coordinator.destroyPersistentStore(at: dbURL, ofType:NSSQLiteStoreType , options: nil)
+        try coordinator.destroyPersistentStoreAtURL(dbURL, withType:NSSQLiteStoreType , options: nil)
         
         try addStoreCoordinator(NSSQLiteStoreType, configuration: nil, storeURL: dbURL, options: nil)
 
@@ -104,7 +104,7 @@ extension CoreDataStack {
         }
     }
     
-    func autoSave(_ delayInSeconds : Int){
+    func autoSave(delayInSeconds : Int){
         
         if delayInSeconds > 0 {
             do{
@@ -116,9 +116,9 @@ extension CoreDataStack {
             
             
             let delayInNanoSeconds = UInt64(delayInSeconds) * NSEC_PER_SEC
-            let time = DispatchTime.now() + Double(Int64(delayInNanoSeconds)) / Double(NSEC_PER_SEC)
+            let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delayInNanoSeconds))
             
-            DispatchQueue.main.after(when: time, block: {
+            dispatch_after(time, dispatch_get_main_queue(), {
                 self.autoSave(delayInSeconds)
             })
             

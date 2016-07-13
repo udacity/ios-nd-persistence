@@ -14,7 +14,7 @@ import CoreData
 
 extension Notebook {
 
-    @NSManaged var creationDate: Date?
+    @NSManaged var creationDate: NSDate?
     @NSManaged var name: String?
     @NSManaged var notes: NSSet?
 
