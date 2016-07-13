@@ -12,7 +12,7 @@ import CoreData
 class CoreDataTableViewController: UITableViewController {
     
     // MARK:  - Properties
-    var fetchedResultsController : NSFetchedResultsController?{
+    var fetchedResultsController : NSFetchedResultsController<AnyObject>?{
         didSet{
             // Whenever the frc changes, we execute the search and
             // reload the table
@@ -22,7 +22,7 @@ class CoreDataTableViewController: UITableViewController {
         }
     }
     
-    init(fetchedResultsController fc : NSFetchedResultsController,
+    init(fetchedResultsController fc : NSFetchedResultsController<AnyObject>,
                                   style : UITableViewStyle = .Plain){
         fetchedResultsController = fc
         super.init(style: style)
@@ -116,11 +116,11 @@ extension CoreDataTableViewController{
 extension CoreDataTableViewController: NSFetchedResultsControllerDelegate{
     
     
-    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+    func controllerWillChangeContent(controller: NSFetchedResultsController<AnyObject>) {
         tableView.beginUpdates()
     }
     
-    func controller(controller: NSFetchedResultsController,
+    func controller(controller: NSFetchedResultsController<AnyObject>,
                     didChangeSection sectionInfo: NSFetchedResultsSectionInfo,
                                      atIndex sectionIndex: Int,
                                              forChangeType type: NSFetchedResultsChangeType) {
@@ -129,11 +129,11 @@ extension CoreDataTableViewController: NSFetchedResultsControllerDelegate{
         
         switch (type){
             
-        case .Insert:
-            tableView.insertSections(set, withRowAnimation: .Fade)
+        case .insert:
+            tableView.insertSections(set as IndexSet, with: .fade)
             
-        case .Delete:
-            tableView.deleteSections(set, withRowAnimation: .Fade)
+        case .delete:
+            tableView.deleteSections(set as IndexSet, with: .fade)
             
         default:
             // irrelevant in our case
@@ -143,7 +143,7 @@ extension CoreDataTableViewController: NSFetchedResultsControllerDelegate{
     }
     
     
-    func controller(controller: NSFetchedResultsController,
+    func controller(controller: NSFetchedResultsController<AnyObject>,
                     didChangeObject anObject: AnyObject,
                                     atIndexPath indexPath: NSIndexPath?,
                                                 forChangeType type: NSFetchedResultsChangeType,
@@ -153,23 +153,23 @@ extension CoreDataTableViewController: NSFetchedResultsControllerDelegate{
         
         switch(type){
             
-        case .Insert:
-            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
+        case .insert:
+            tableView.insertRows(at: [newIndexPath! as IndexPath], with: .fade)
             
-        case .Delete:
-            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+        case .delete:
+            tableView.deleteRows(at: [indexPath! as IndexPath], with: .fade)
             
-        case .Update:
-            tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+        case .update:
+            tableView.reloadRows(at: [indexPath! as IndexPath], with: .fade)
             
-        case .Move:
-            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
+        case .move:
+            tableView.deleteRows(at: [indexPath! as IndexPath], with: .fade)
+            tableView.insertRows(at: [newIndexPath! as IndexPath], with: .fade)
         }
         
     }
     
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+    func controllerDidChangeContent(controller: NSFetchedResultsController<AnyObject>) {
         tableView.endUpdates()
     }
 }

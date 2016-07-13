@@ -13,22 +13,22 @@ struct CoreDataStack {
     // MARK:  - Properties
     private let model : NSManagedObjectModel
     private let coordinator : NSPersistentStoreCoordinator
-    private let modelURL : NSURL
-    private let dbURL : NSURL
+    private let modelURL : URL
+    private let dbURL : URL
     let context : NSManagedObjectContext
     
     // MARK:  - Initializers
     init?(modelName: String){
         
         // Assumes the model is in the main bundle
-        guard let modelURL = NSBundle.mainBundle().URLForResource(modelName, withExtension: "momd") else {
+        guard let modelURL = Bundle.main().urlForResource(modelName, withExtension: "momd") else {
             print("Unable to find \(modelName)in the main bundle")
             return nil}
         
         self.modelURL = modelURL
         
         // Try to create the model from the URL
-        guard let model = NSManagedObjectModel(contentsOfURL: modelURL) else{
+        guard let model = NSManagedObjectModel(contentsOf: modelURL) else{
             print("unable to create a model from \(modelURL)")
             return nil
         }
@@ -42,20 +42,20 @@ struct CoreDataStack {
         
         
         // create a context and add connect it to the coordinator
-        context = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
+        context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         context.persistentStoreCoordinator = coordinator
         
         
         
         // Add a SQLite store located in the documents folder
-        let fm = NSFileManager.defaultManager()
+        let fm = FileManager.default()
         
-        guard let  docUrl = fm.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first else{
+        guard let  docUrl = fm.urlsForDirectory(.documentDirectory, inDomains: .userDomainMask).first else{
             print("Unable to reach the documents folder")
             return nil
         }
         
-        self.dbURL = docUrl.URLByAppendingPathComponent("model.sqlite")
+        self.dbURL = try! docUrl.appendingPathComponent("model.sqlite")
         
 
         // Options for migration
@@ -75,12 +75,12 @@ struct CoreDataStack {
     }
     
     // MARK:  - Utils
-    func addStoreCoordinator(storeType: String,
+    func addStoreCoordinator(_ storeType: String,
                              configuration: String?,
-                             storeURL: NSURL,
+                             storeURL: URL,
                              options : [NSObject : AnyObject]?) throws{
         
-        try coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: dbURL, options: nil)
+        try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: dbURL, options: nil)
         
     }
 }
@@ -92,7 +92,7 @@ extension CoreDataStack  {
     func dropAllData() throws{
         // delete all the objects in the db. This won't delete the files, it will
         // just leave empty tables.
-        try coordinator.destroyPersistentStoreAtURL(dbURL, withType:NSSQLiteStoreType , options: nil)
+        try coordinator.destroyPersistentStore(at: dbURL, ofType:NSSQLiteStoreType , options: nil)
         
         try addStoreCoordinator(NSSQLiteStoreType, configuration: nil, storeURL: dbURL, options: nil)
 
@@ -109,7 +109,7 @@ extension CoreDataStack {
         }
     }
     
-    func autoSave(delayInSeconds : Int){
+    func autoSave(_ delayInSeconds : Int){
         
         if delayInSeconds > 0 {
             do{
@@ -121,9 +121,9 @@ extension CoreDataStack {
             
             
             let delayInNanoSeconds = UInt64(delayInSeconds) * NSEC_PER_SEC
-            let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delayInNanoSeconds))
+            let time = DispatchTime.now() + Double(Int64(delayInNanoSeconds)) / Double(NSEC_PER_SEC)
             
-            dispatch_after(time, dispatch_get_main_queue(), {
+            DispatchQueue.main.after(when: time, block: {
                 self.autoSave(delayInSeconds)
             })
             
