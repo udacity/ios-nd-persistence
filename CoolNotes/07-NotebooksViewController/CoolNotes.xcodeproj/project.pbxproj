@@ -8,34 +8,34 @@
 
 /* Begin PBXBuildFile section */
 		A934F3E41D36A5C3000625CA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A934F3E21D36A5C3000625CA /* LaunchScreen.xib */; };
+		A9AECDDB1D36CAC20051289E /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AECDD41D36CAC20051289E /* CoreDataStack.swift */; };
+		A9AECDDC1D36CAC20051289E /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A9AECDD51D36CAC20051289E /* Model.xcdatamodeld */; };
+		A9AECDDD1D36CAC20051289E /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AECDD71D36CAC20051289E /* Note.swift */; };
+		A9AECDDE1D36CAC20051289E /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AECDD81D36CAC20051289E /* Note+CoreDataProperties.swift */; };
+		A9AECDDF1D36CAC20051289E /* Notebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AECDD91D36CAC20051289E /* Notebook.swift */; };
+		A9AECDE01D36CAC20051289E /* Notebook+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AECDDA1D36CAC20051289E /* Notebook+CoreDataProperties.swift */; };
 		ED9E071B1C90F369004C22C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9E071A1C90F369004C22C1 /* AppDelegate.swift */; };
 		ED9E071D1C90F369004C22C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9E071C1C90F369004C22C1 /* ViewController.swift */; };
 		ED9E07201C90F369004C22C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED9E071E1C90F369004C22C1 /* Main.storyboard */; };
 		ED9E07221C90F369004C22C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED9E07211C90F369004C22C1 /* Assets.xcassets */; };
-		EDFD7F061C910470004EE292 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EDFD7F041C910470004EE292 /* Model.xcdatamodeld */; };
-		EDFD7F0B1C91FEBB004EE292 /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD7F071C91FEBB004EE292 /* Note+CoreDataProperties.swift */; };
-		EDFD7F0C1C91FEBB004EE292 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD7F081C91FEBB004EE292 /* Note.swift */; };
-		EDFD7F0D1C91FEBB004EE292 /* Notebook+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD7F091C91FEBB004EE292 /* Notebook+CoreDataProperties.swift */; };
-		EDFD7F0E1C91FEBB004EE292 /* Notebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD7F0A1C91FEBB004EE292 /* Notebook.swift */; };
-		EDFD7F131C921EFB004EE292 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD7F121C921EFB004EE292 /* CoreDataStack.swift */; };
 		EDFD7F191C92318D004EE292 /* CoreDataTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD7F181C92318D004EE292 /* CoreDataTableViewController.swift */; };
 		EDFD7F1B1C92325D004EE292 /* NotebooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD7F1A1C92325D004EE292 /* NotebooksViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A934F3E31D36A5C3000625CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		A9AECDD41D36CAC20051289E /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = CoolNotes/CoreDataStack.swift; sourceTree = "<group>"; };
+		A9AECDD61D36CAC20051289E /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		A9AECDD71D36CAC20051289E /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Note.swift; path = CoolNotes/Note.swift; sourceTree = "<group>"; };
+		A9AECDD81D36CAC20051289E /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Note+CoreDataProperties.swift"; path = "CoolNotes/Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A9AECDD91D36CAC20051289E /* Notebook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Notebook.swift; path = CoolNotes/Notebook.swift; sourceTree = "<group>"; };
+		A9AECDDA1D36CAC20051289E /* Notebook+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Notebook+CoreDataProperties.swift"; path = "CoolNotes/Notebook+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		ED9E07171C90F369004C22C1 /* CoolNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoolNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED9E071A1C90F369004C22C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED9E071C1C90F369004C22C1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		ED9E071F1C90F369004C22C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ED9E07211C90F369004C22C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED9E07261C90F369004C22C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EDFD7F051C910470004EE292 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		EDFD7F071C91FEBB004EE292 /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EDFD7F081C91FEBB004EE292 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
-		EDFD7F091C91FEBB004EE292 /* Notebook+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Notebook+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EDFD7F0A1C91FEBB004EE292 /* Notebook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notebook.swift; sourceTree = "<group>"; };
-		EDFD7F121C921EFB004EE292 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		EDFD7F181C92318D004EE292 /* CoreDataTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTableViewController.swift; sourceTree = "<group>"; };
 		EDFD7F1A1C92325D004EE292 /* NotebooksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotebooksViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -101,12 +101,12 @@
 		EDFD7F0F1C91FEC1004EE292 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				EDFD7F121C921EFB004EE292 /* CoreDataStack.swift */,
-				EDFD7F041C910470004EE292 /* Model.xcdatamodeld */,
-				EDFD7F071C91FEBB004EE292 /* Note+CoreDataProperties.swift */,
-				EDFD7F081C91FEBB004EE292 /* Note.swift */,
-				EDFD7F091C91FEBB004EE292 /* Notebook+CoreDataProperties.swift */,
-				EDFD7F0A1C91FEBB004EE292 /* Notebook.swift */,
+				A9AECDD41D36CAC20051289E /* CoreDataStack.swift */,
+				A9AECDD51D36CAC20051289E /* Model.xcdatamodeld */,
+				A9AECDD71D36CAC20051289E /* Note.swift */,
+				A9AECDD81D36CAC20051289E /* Note+CoreDataProperties.swift */,
+				A9AECDD91D36CAC20051289E /* Notebook.swift */,
+				A9AECDDA1D36CAC20051289E /* Notebook+CoreDataProperties.swift */,
 			);
 			name = Models;
 			path = ..;
@@ -192,16 +192,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDFD7F0C1C91FEBB004EE292 /* Note.swift in Sources */,
+				A9AECDDB1D36CAC20051289E /* CoreDataStack.swift in Sources */,
+				A9AECDDE1D36CAC20051289E /* Note+CoreDataProperties.swift in Sources */,
+				A9AECDE01D36CAC20051289E /* Notebook+CoreDataProperties.swift in Sources */,
 				EDFD7F1B1C92325D004EE292 /* NotebooksViewController.swift in Sources */,
+				A9AECDDD1D36CAC20051289E /* Note.swift in Sources */,
+				A9AECDDF1D36CAC20051289E /* Notebook.swift in Sources */,
 				ED9E071D1C90F369004C22C1 /* ViewController.swift in Sources */,
-				EDFD7F0D1C91FEBB004EE292 /* Notebook+CoreDataProperties.swift in Sources */,
-				EDFD7F0B1C91FEBB004EE292 /* Note+CoreDataProperties.swift in Sources */,
 				ED9E071B1C90F369004C22C1 /* AppDelegate.swift in Sources */,
-				EDFD7F061C910470004EE292 /* Model.xcdatamodeld in Sources */,
-				EDFD7F0E1C91FEBB004EE292 /* Notebook.swift in Sources */,
-				EDFD7F131C921EFB004EE292 /* CoreDataStack.swift in Sources */,
 				EDFD7F191C92318D004EE292 /* CoreDataTableViewController.swift in Sources */,
+				A9AECDDC1D36CAC20051289E /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,13 +356,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		EDFD7F041C910470004EE292 /* Model.xcdatamodeld */ = {
+		A9AECDD51D36CAC20051289E /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				EDFD7F051C910470004EE292 /* Model.xcdatamodel */,
+				A9AECDD61D36CAC20051289E /* Model.xcdatamodel */,
 			);
-			currentVersion = EDFD7F051C910470004EE292 /* Model.xcdatamodel */;
-			path = Model.xcdatamodeld;
+			currentVersion = A9AECDD61D36CAC20051289E /* Model.xcdatamodel */;
+			name = Model.xcdatamodeld;
+			path = CoolNotes/Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
