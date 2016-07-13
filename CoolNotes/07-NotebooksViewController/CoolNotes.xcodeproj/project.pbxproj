@@ -18,7 +18,6 @@
 		EDFD7F0D1C91FEBB004EE292 /* Notebook+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD7F091C91FEBB004EE292 /* Notebook+CoreDataProperties.swift */; };
 		EDFD7F0E1C91FEBB004EE292 /* Notebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD7F0A1C91FEBB004EE292 /* Notebook.swift */; };
 		EDFD7F131C921EFB004EE292 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD7F121C921EFB004EE292 /* CoreDataStack.swift */; };
-		EDFD7F151C9230DD004EE292 /* 19-512.png in Resources */ = {isa = PBXBuildFile; fileRef = EDFD7F141C9230DD004EE292 /* 19-512.png */; };
 		EDFD7F191C92318D004EE292 /* CoreDataTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD7F181C92318D004EE292 /* CoreDataTableViewController.swift */; };
 		EDFD7F1B1C92325D004EE292 /* NotebooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD7F1A1C92325D004EE292 /* NotebooksViewController.swift */; };
 /* End PBXBuildFile section */
@@ -37,7 +36,6 @@
 		EDFD7F091C91FEBB004EE292 /* Notebook+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Notebook+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		EDFD7F0A1C91FEBB004EE292 /* Notebook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notebook.swift; sourceTree = "<group>"; };
 		EDFD7F121C921EFB004EE292 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
-		EDFD7F141C9230DD004EE292 /* 19-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "19-512.png"; sourceTree = "<group>"; };
 		EDFD7F181C92318D004EE292 /* CoreDataTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTableViewController.swift; sourceTree = "<group>"; };
 		EDFD7F1A1C92325D004EE292 /* NotebooksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotebooksViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -91,7 +89,6 @@
 			isa = PBXGroup;
 			children = (
 				EDFD7F171C92314F004EE292 /* Controllers */,
-				EDFD7F161C9230E8004EE292 /* Resources */,
 				EDFD7F0F1C91FEC1004EE292 /* Models */,
 				ED9E071A1C90F369004C22C1 /* AppDelegate.swift */,
 				ED9E071C1C90F369004C22C1 /* ViewController.swift */,
@@ -113,14 +110,6 @@
 			);
 			name = Models;
 			path = ..;
-			sourceTree = "<group>";
-		};
-		EDFD7F161C9230E8004EE292 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				EDFD7F141C9230DD004EE292 /* 19-512.png */,
-			);
-			name = Resources;
 			sourceTree = "<group>";
 		};
 		EDFD7F171C92314F004EE292 /* Controllers */ = {
@@ -191,7 +180,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A934F3E41D36A5C3000625CA /* LaunchScreen.xib in Resources */,
-				EDFD7F151C9230DD004EE292 /* 19-512.png in Resources */,
 				ED9E07221C90F369004C22C1 /* Assets.xcassets in Resources */,
 				ED9E07201C90F369004C22C1 /* Main.storyboard in Resources */,
 			);
