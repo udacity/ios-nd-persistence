@@ -1,0 +1,310 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A9CCAFD51D37C53C00E00DAF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9CCAFD31D37C53C00E00DAF /* LaunchScreen.xib */; };
+		EDA163371CE69ECA009671EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA163361CE69ECA009671EE /* AppDelegate.swift */; };
+		EDA163391CE69ECA009671EE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA163381CE69ECA009671EE /* ViewController.swift */; };
+		EDA1633C1CE69ECA009671EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDA1633A1CE69ECA009671EE /* Main.storyboard */; };
+		EDA1633E1CE69ECA009671EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDA1633D1CE69ECA009671EE /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A9CCAFD41D37C53C00E00DAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		EDA163331CE69ECA009671EE /* SandboxPlayground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SandboxPlayground.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDA163361CE69ECA009671EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EDA163381CE69ECA009671EE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EDA1633B1CE69ECA009671EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EDA1633D1CE69ECA009671EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EDA163421CE69ECB009671EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EDA163301CE69ECA009671EE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A9CCAFD61D37C54100E00DAF /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				EDA1633A1CE69ECA009671EE /* Main.storyboard */,
+				A9CCAFD31D37C53C00E00DAF /* LaunchScreen.xib */,
+				EDA1633D1CE69ECA009671EE /* Assets.xcassets */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		A9CCAFD71D37C54500E00DAF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EDA163421CE69ECB009671EE /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EDA1632A1CE69ECA009671EE = {
+			isa = PBXGroup;
+			children = (
+				EDA163351CE69ECA009671EE /* SandboxPlayground */,
+				EDA163341CE69ECA009671EE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EDA163341CE69ECA009671EE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EDA163331CE69ECA009671EE /* SandboxPlayground.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EDA163351CE69ECA009671EE /* SandboxPlayground */ = {
+			isa = PBXGroup;
+			children = (
+				EDA163361CE69ECA009671EE /* AppDelegate.swift */,
+				EDA163381CE69ECA009671EE /* ViewController.swift */,
+				A9CCAFD61D37C54100E00DAF /* Assets */,
+				A9CCAFD71D37C54500E00DAF /* Supporting Files */,
+			);
+			path = SandboxPlayground;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EDA163321CE69ECA009671EE /* SandboxPlayground */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDA163501CE69ECB009671EE /* Build configuration list for PBXNativeTarget "SandboxPlayground" */;
+			buildPhases = (
+				EDA1632F1CE69ECA009671EE /* Sources */,
+				EDA163301CE69ECA009671EE /* Frameworks */,
+				EDA163311CE69ECA009671EE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SandboxPlayground;
+			productName = SandboxPlayground;
+			productReference = EDA163331CE69ECA009671EE /* SandboxPlayground.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EDA1632B1CE69ECA009671EE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = udacity.com;
+				TargetAttributes = {
+					EDA163321CE69ECA009671EE = {
+						CreatedOnToolsVersion = 7.3;
+					};
+				};
+			};
+			buildConfigurationList = EDA1632E1CE69ECA009671EE /* Build configuration list for PBXProject "SandboxPlayground" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EDA1632A1CE69ECA009671EE;
+			productRefGroup = EDA163341CE69ECA009671EE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EDA163321CE69ECA009671EE /* SandboxPlayground */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EDA163311CE69ECA009671EE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDA1633E1CE69ECA009671EE /* Assets.xcassets in Resources */,
+				A9CCAFD51D37C53C00E00DAF /* LaunchScreen.xib in Resources */,
+				EDA1633C1CE69ECA009671EE /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EDA1632F1CE69ECA009671EE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDA163391CE69ECA009671EE /* ViewController.swift in Sources */,
+				EDA163371CE69ECA009671EE /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A9CCAFD31D37C53C00E00DAF /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A9CCAFD41D37C53C00E00DAF /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		EDA1633A1CE69ECA009671EE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EDA1633B1CE69ECA009671EE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EDA1634E1CE69ECB009671EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EDA1634F1CE69ECB009671EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EDA163511CE69ECB009671EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = SandboxPlayground/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.udacity.SandboxPlayground;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		EDA163521CE69ECB009671EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = SandboxPlayground/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.udacity.SandboxPlayground;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EDA1632E1CE69ECA009671EE /* Build configuration list for PBXProject "SandboxPlayground" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDA1634E1CE69ECB009671EE /* Debug */,
+				EDA1634F1CE69ECB009671EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EDA163501CE69ECB009671EE /* Build configuration list for PBXNativeTarget "SandboxPlayground" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDA163511CE69ECB009671EE /* Debug */,
+				EDA163521CE69ECB009671EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EDA1632B1CE69ECA009671EE /* Project object */;
+}
