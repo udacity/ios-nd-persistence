@@ -20,13 +20,13 @@ class NotebooksViewController: CoreDataTableViewController {
         title = "CoolNotes"
         
         // Get the stack
-        let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let delegate = UIApplication.shared().delegate as! AppDelegate
         let stack = delegate.stack
         
         // Create a fetchrequest
-        let fr = NSFetchRequest(entityName: "Notebook")
-        fr.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true),
-            NSSortDescriptor(key: "creationDate", ascending: false)]
+        let fr = NSFetchRequest<NSFetchRequestResult>(entityName: "Notebook")
+        fr.sortDescriptors = [SortDescriptor(key: "name", ascending: true),
+            SortDescriptor(key: "creationDate", ascending: false)]
         
         // Create the FetchedResultsController
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fr,
@@ -43,7 +43,7 @@ class NotebooksViewController: CoreDataTableViewController {
     
 
     // MARK:  - TableView Data Source
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
         // This method must be implemented by our subclass. There's no way
@@ -52,10 +52,10 @@ class NotebooksViewController: CoreDataTableViewController {
         
         
         // Find the right notebook for this indexpath
-        let nb = fetchedResultsController!.objectAtIndexPath(indexPath) as! Notebook
+        let nb = fetchedResultsController!.object(at: indexPath) as! Notebook
         
         // Create the cell
-        let cell = tableView.dequeueReusableCellWithIdentifier("NotebookCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NotebookCell", for: indexPath)
         
         // Sync notebook -> cell
         cell.textLabel?.text = nb.name

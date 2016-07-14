@@ -25,24 +25,24 @@ class NoteViewController: UITableViewController {
             textView.text = model.text
             
             // date
-            let dateFmt = NSDateFormatter()
-            dateFmt.dateStyle = .ShortStyle
-            dateView.text = dateFmt.stringFromDate(model.creationDate!)
+            let dateFmt = DateFormatter()
+            dateFmt.dateStyle = .short
+            dateView.text = dateFmt.string(from: model.creationDate! as Date)
             
             // Relative date
-            let relativeFmt = NSDateFormatter()
-            relativeFmt.timeStyle = .NoStyle
-            relativeFmt.dateStyle = .ShortStyle
+            let relativeFmt = DateFormatter()
+            relativeFmt.timeStyle = .none
+            relativeFmt.dateStyle = .short
             relativeFmt.doesRelativeDateFormatting = true
-            relativeFmt.locale = NSLocale.currentLocale()
+            relativeFmt.locale = Locale.current
 
-            relativeDateView.text = relativeFmt.stringFromDate(model.creationDate!)
+            relativeDateView.text = relativeFmt.string(from: model.creationDate! as Date)
         }
         
         
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         syncViewsWithModel()
@@ -65,12 +65,12 @@ class NoteViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 0
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 0
     }

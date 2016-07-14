@@ -24,13 +24,13 @@ class NotesViewController: CoreDataTableViewController {
     }
     
     // MARK:  - TableView Data Source
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // Get the note
-        let note = fetchedResultsController?.objectAtIndexPath(indexPath) as! Note
+        let note = fetchedResultsController?.object(at: indexPath) as! Note
         
         // Get the cell
-        let cell = tableView.dequeueReusableCellWithIdentifier("Note", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Note", for: indexPath)
         
         // Sync note -> cell
         cell.textLabel?.text = note.text
@@ -39,23 +39,23 @@ class NotesViewController: CoreDataTableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView,
-                            commitEditingStyle editingStyle: UITableViewCellEditingStyle,
-                            forRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView,
+                            commit editingStyle: UITableViewCellEditingStyle,
+                            forRowAt indexPath: IndexPath) {
         
         
         if let context = fetchedResultsController?.managedObjectContext,
-            note = fetchedResultsController?.objectAtIndexPath(indexPath) as? Note
-            where editingStyle == .Delete{
+            note = fetchedResultsController?.object(at: indexPath) as? Note
+            where editingStyle == .delete{
             
-            context.deleteObject(note)
+            context.delete(note)
             
         }
     }
     
     
  
-    @IBAction func addNewNote(sender: AnyObject) {
+    @IBAction func addNewNote(_ sender: AnyObject) {
         
         if let nb = notebook, context = fetchedResultsController?.managedObjectContext{
 
@@ -70,7 +70,7 @@ class NotesViewController: CoreDataTableViewController {
     
     
     // MARK:  - Navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "displayNote" {
             
@@ -79,7 +79,7 @@ class NotesViewController: CoreDataTableViewController {
             // Get the detailVC
             
             if let ip = tableView.indexPathForSelectedRow,
-                note = fetchedResultsController?.objectAtIndexPath(ip) as? Note,
+                note = fetchedResultsController?.object(at: ip) as? Note,
                 vc = segue.destinationViewController as? NoteViewController{
                 
                 // Inject the note in the the detailVC

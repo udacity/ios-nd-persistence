@@ -14,7 +14,7 @@ import CoreData
 
 extension PhotoFrame {
 
-    @NSManaged var imageData: NSData?
+    @NSManaged var imageData: Data?
     @NSManaged var note: Note?
 
 }

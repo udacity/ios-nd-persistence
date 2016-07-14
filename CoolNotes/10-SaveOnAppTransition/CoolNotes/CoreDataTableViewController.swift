@@ -12,7 +12,7 @@ import CoreData
 class CoreDataTableViewController: UITableViewController {
     
     // MARK:  - Properties
-    var fetchedResultsController : NSFetchedResultsController?{
+    var fetchedResultsController : NSFetchedResultsController<NSFetchRequestResult>?{
         didSet{
             // Whenever the frc changes, we execute the search and
             // reload the table
@@ -22,8 +22,8 @@ class CoreDataTableViewController: UITableViewController {
         }
     }
     
-    init(fetchedResultsController fc : NSFetchedResultsController,
-    style : UITableViewStyle = .Plain){
+    init(fetchedResultsController fc : NSFetchedResultsController<NSFetchRequestResult>,
+    style : UITableViewStyle = .plain){
         fetchedResultsController = fc
         super.init(style: style)
         
@@ -45,7 +45,7 @@ class CoreDataTableViewController: UITableViewController {
 // MARK:  - Subclass responsability
 extension CoreDataTableViewController{
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         fatalError("This method MUST be implemented by a subclass of CoreDataTableViewController")
     }
@@ -54,7 +54,7 @@ extension CoreDataTableViewController{
 // MARK:  - Table Data Source
 extension CoreDataTableViewController{
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         if let fc = fetchedResultsController{
             return (fc.sections?.count)!;
         }else{
@@ -62,7 +62,7 @@ extension CoreDataTableViewController{
         }
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let fc = fetchedResultsController{
             return fc.sections![section].numberOfObjects;
         }else{
@@ -70,7 +70,7 @@ extension CoreDataTableViewController{
         }
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if let fc = fetchedResultsController{
             return fc.sections![section].name;
         }else{
@@ -78,15 +78,15 @@ extension CoreDataTableViewController{
         }
     }
     
-    override func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
+    override func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
         if let fc = fetchedResultsController{
-            return fc.sectionForSectionIndexTitle(title, atIndex: index)
+            return fc.section(forSectionIndexTitle: title, at: index)
         }else{
             return 0
         }
     }
     
-    override func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         if let fc = fetchedResultsController{
             return  fc.sectionIndexTitles
         }else{
@@ -115,24 +115,24 @@ extension CoreDataTableViewController{
 extension CoreDataTableViewController: NSFetchedResultsControllerDelegate{
     
     
-    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
     }
     
-    func controller(controller: NSFetchedResultsController,
-         didChangeSection sectionInfo: NSFetchedResultsSectionInfo,
-                          atIndex sectionIndex: Int,
-                                  forChangeType type: NSFetchedResultsChangeType) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+         didChange sectionInfo: NSFetchedResultsSectionInfo,
+                          atSectionIndex sectionIndex: Int,
+                                  for type: NSFetchedResultsChangeType) {
         
-        let set = NSIndexSet(index: sectionIndex)
+        let set = IndexSet(integer: sectionIndex)
         
         switch (type){
             
-        case .Insert:
-            tableView.insertSections(set, withRowAnimation: .Fade)
+        case .insert:
+            tableView.insertSections(set, with: .fade)
             
-        case .Delete:
-            tableView.deleteSections(set, withRowAnimation: .Fade)
+        case .delete:
+            tableView.deleteSections(set, with: .fade)
             
         default:
             // irrelevant in our case
@@ -142,34 +142,34 @@ extension CoreDataTableViewController: NSFetchedResultsControllerDelegate{
     }
     
     
-    func controller(controller: NSFetchedResultsController,
-         didChangeObject anObject: AnyObject,
-                         atIndexPath indexPath: NSIndexPath?,
-                                     forChangeType type: NSFetchedResultsChangeType,
-                                                   newIndexPath: NSIndexPath?) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+         didChange anObject: AnyObject,
+                         at indexPath: IndexPath?,
+                                     for type: NSFetchedResultsChangeType,
+                                                   newIndexPath: IndexPath?) {
         
         guard let newIndexPath = newIndexPath else{
             fatalError("No indexPath received")
         }
         switch(type){
             
-        case .Insert:
-            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+        case .insert:
+            tableView.insertRows(at: [newIndexPath], with: .fade)
             
-        case .Delete:
-            tableView.deleteRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+        case .delete:
+            tableView.deleteRows(at: [newIndexPath], with: .fade)
             
-        case .Update:
-            tableView.reloadRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+        case .update:
+            tableView.reloadRows(at: [newIndexPath], with: .fade)
             
-        case .Move:
-            tableView.deleteRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
-            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+        case .move:
+            tableView.deleteRows(at: [newIndexPath], with: .fade)
+            tableView.insertRows(at: [newIndexPath], with: .fade)
         }
         
     }
     
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
     }
 }
