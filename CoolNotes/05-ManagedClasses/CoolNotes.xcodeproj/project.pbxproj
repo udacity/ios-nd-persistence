@@ -84,9 +84,9 @@
 		ED9E07191C90F369004C22C1 /* CoolNotes */ = {
 			isa = PBXGroup;
 			children = (
-				EDFD7F0F1C91FEC1004EE292 /* Models */,
 				ED9E071A1C90F369004C22C1 /* AppDelegate.swift */,
 				ED9E071C1C90F369004C22C1 /* ViewController.swift */,
+				EDFD7F0F1C91FEC1004EE292 /* Models */,
 				A934F3DB1D36A52C000625CA /* Assets */,
 				A934F3DC1D36A533000625CA /* Supporting Files */,
 			);
