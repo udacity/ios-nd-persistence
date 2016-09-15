@@ -8,22 +8,29 @@
 
 import UIKit
 
-class NotesViewController: CoreDataTableViewController {
+import UIKit
 
+// MARK: - NotesViewController: CoreDataTableViewController
+
+class NotesViewController: CoreDataTableViewController {
+    
+    // MARK: Properties
+    
     var notebook : Notebook?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    // MARK: Actions
+    
+    @IBAction func addNewNote(_ sender: AnyObject) {
+        
+        if let nb = notebook, let context = fetchedResultsController?.managedObjectContext {
+            // Just create a new note and you're done!
+            let note = Note(text: "New Note", context: context)
+            note.notebook = nb
+        }
     }
     
-    // MARK:  - TableView Data Source
+    // MARK: TableView Data Source
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // Get the note
@@ -39,54 +46,25 @@ class NotesViewController: CoreDataTableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView,
-                            commit editingStyle: UITableViewCellEditingStyle,
-                            forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
-        
-        if let context = fetchedResultsController?.managedObjectContext,
-            note = fetchedResultsController?.object(at: indexPath) as? Note
-            where editingStyle == .delete{
-            
+        if let context = fetchedResultsController?.managedObjectContext, let note = fetchedResultsController?.object(at: indexPath) as? Note, editingStyle == .delete {
             context.delete(note)
-            
         }
     }
     
+    // MARK:  Navigation
     
- 
-    @IBAction func addNewNote(_ sender: AnyObject) {
-        
-        if let nb = notebook, context = fetchedResultsController?.managedObjectContext{
-
-            // Just create a new note and you're done!
-            let note = Note(text: "New Note", context: context)
-            note.notebook = nb
-            
-        }
-        
-        
-    }
-    
-    
-    // MARK:  - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "displayNote" {
             
-            
             // Get the note
             // Get the detailVC
-            
-            if let ip = tableView.indexPathForSelectedRow,
-                note = fetchedResultsController?.object(at: ip) as? Note,
-                vc = segue.destinationViewController as? NoteViewController{
-                
+            if let ip = tableView.indexPathForSelectedRow, let note = fetchedResultsController?.object(at: ip) as? Note, let vc = segue.destination as? NoteViewController {
                 // Inject the note in the the detailVC
                 vc.model = note
-                
             }
-            
         }
     }
 }
