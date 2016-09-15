@@ -8,10 +8,16 @@
 
 import UIKit
 
+// MARK: - AppDelegate: UIResponder, UIApplicationDelegate
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    // MARK: Properties
+    
     var window: UIWindow?
+    
+    // MARK: UIApplicationDelegate
     
     func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Usually this is not overridden. Using the "did finish launching" method is more typical

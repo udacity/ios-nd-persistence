@@ -8,18 +8,42 @@
 
 import UIKit
 
-class NoteViewController: UITableViewController {
+// MARK: - NoteViewController: UITableViewController
 
+class NoteViewController: UITableViewController {
     
-    // MARK:  - Properties
+    // MARK: Properties
+    
+    var model: Note?
+    
+    // MARK: Outlets
+    
     @IBOutlet weak var relativeDateView: UILabel!
     @IBOutlet weak var dateView: UILabel!
     @IBOutlet weak var textView: UITextView!
-    var model : Note?    
     
-    func syncViewsWithModel(){
+    // MARK: Life Cycle
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        syncViewsWithModel()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        if let model = model{
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+        
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    // MARK: Sync Model
+    
+    func syncViewsWithModel() {
+        
+        if let model = model {
             
             // Text
             textView.text = model.text
@@ -35,35 +59,11 @@ class NoteViewController: UITableViewController {
             relativeFmt.dateStyle = .ShortStyle
             relativeFmt.doesRelativeDateFormatting = true
             relativeFmt.locale = NSLocale.currentLocale()
-
             relativeDateView.text = relativeFmt.stringFromDate(model.creationDate!)
         }
-        
-        
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        syncViewsWithModel()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: - Table view data source
+    // MARK: TableView Data Source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections

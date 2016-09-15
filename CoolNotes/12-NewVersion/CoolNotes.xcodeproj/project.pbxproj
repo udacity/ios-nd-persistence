@@ -97,10 +97,10 @@
 		ED9E07191C90F369004C22C1 /* CoolNotes */ = {
 			isa = PBXGroup;
 			children = (
-				EDFD7F171C92314F004EE292 /* Controllers */,
-				EDFD7F0F1C91FEC1004EE292 /* Models */,
 				ED9E071A1C90F369004C22C1 /* AppDelegate.swift */,
 				ED9E071C1C90F369004C22C1 /* ViewController.swift */,
+				EDFD7F0F1C91FEC1004EE292 /* Models */,
+				EDFD7F171C92314F004EE292 /* Controllers */,
 				A934F3F41D36A6AE000625CA /* Assets */,
 				A934F3F51D36A6B2000625CA /* Supporting Files */,
 			);
@@ -166,6 +166,7 @@
 				TargetAttributes = {
 					ED9E07161C90F369004C22C1 = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -336,6 +337,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.udacity.CoolNotes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -348,6 +350,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.udacity.CoolNotes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};

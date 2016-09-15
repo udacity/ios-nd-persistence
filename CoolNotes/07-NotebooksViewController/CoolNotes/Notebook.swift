@@ -9,25 +9,23 @@
 import Foundation
 import CoreData
 
+// MARK: - Notebook: NSManagedObject
 
 class Notebook: NSManagedObject {
-
+    
+    // MARK: Initializer
+    
     convenience init(name: String, context: NSManagedObjectContext){
         
         // An EntityDescription is an object that has access to all
         // the information you provided in the Entity part of the model
         // you need it to create an instance of this class.
-        if let ent = NSEntityDescription.entityForName("Notebook",
-                                                       inManagedObjectContext: context){
+        if let ent = NSEntityDescription.entityForName("Notebook", inManagedObjectContext: context) {
             self.init(entity: ent, insertIntoManagedObjectContext: context)
             self.name = name;
             self.creationDate = NSDate()
-        }else{
+        } else {
             fatalError("Unable to find Entity name!")
         }
-        
-        
-        
     }
-
 }

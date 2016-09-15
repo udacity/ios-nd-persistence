@@ -9,9 +9,11 @@
 import UIKit
 import CoreData
 
+// MARK: - NotebooksViewController: CoreDataTableViewController
+
 class NotebooksViewController: CoreDataTableViewController {
 
-    
+    // MARK: Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,27 +31,17 @@ class NotebooksViewController: CoreDataTableViewController {
             NSSortDescriptor(key: "creationDate", ascending: false)]
         
         // Create the FetchedResultsController
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: fr,
-                                            managedObjectContext: stack.context, sectionNameKeyPath: nil, cacheName: nil)
-        
-        
-        
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fr, managedObjectContext: stack.context, sectionNameKeyPath: nil, cacheName: nil)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    // MARK: TableView Data Source
     
-
-    // MARK:  - TableView Data Source
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         
         // This method must be implemented by our subclass. There's no way
         // CoreDataTableViewController can know what type of cell we want to
         // use.
-        
         
         // Find the right notebook for this indexpath
         let nb = fetchedResultsController!.objectAtIndexPath(indexPath) as! Notebook
@@ -61,18 +53,16 @@ class NotebooksViewController: CoreDataTableViewController {
         cell.textLabel?.text = nb.name
         cell.detailTextLabel?.text = String(format: "%d notes", nb.notes!.count)
         
-        
         return cell
-        
     }
+    
+    // MARK: Navigation
+    
     /*
-    // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
     */
-
 }

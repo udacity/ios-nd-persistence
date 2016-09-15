@@ -80,8 +80,8 @@
 			isa = PBXGroup;
 			children = (
 				4D37A77F1A5B089600294894 /* Main.storyboard */,
-				4D37A7821A5B089600294894 /* Images.xcassets */,
 				4D37A7841A5B089600294894 /* LaunchScreen.xib */,
+				4D37A7821A5B089600294894 /* Images.xcassets */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -118,6 +118,7 @@
 				TargetAttributes = {
 					4D37A7751A5B089600294894 = {
 						CreatedOnToolsVersion = 6.1.1;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -272,6 +273,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "UD.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -283,6 +285,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "UD.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};

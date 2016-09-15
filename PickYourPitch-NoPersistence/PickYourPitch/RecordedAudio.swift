@@ -8,9 +8,12 @@
 
 import Foundation
 
+// MARK: - RecordedAudio
+
 struct RecordedAudio {
+
+    // MARK: Properties
     
     var filePathUrl: NSURL!
     var title: String!
-    
 }

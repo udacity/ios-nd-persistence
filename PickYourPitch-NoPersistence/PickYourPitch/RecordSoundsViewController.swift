@@ -9,19 +9,23 @@
 import UIKit
 import AVFoundation
 
+// MARK: - RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate
+
 class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
 
+    // MARK: Properties
+    
+    var audioRecorder: AVAudioRecorder!
+    var recordedAudio: RecordedAudio!
+    var shouldSegueToSoundPlayer = false
+    
+    // MARK: Outlets
+    
     @IBOutlet weak var recordingInProgress: UILabel!
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var recordButton: UIButton!
     
-    var audioRecorder:AVAudioRecorder!
-    var recordedAudio:RecordedAudio!
-    var shouldSegueToSoundPlayer = false
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+    // MARK: Life Cycle
     
     override func viewWillAppear(animated: Bool) {
         //Hide the stop button
@@ -29,6 +33,8 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         recordButton.enabled = true
     }
 
+    // MARK: Actions
+    
     @IBAction func recordAudio(sender: UIButton) {
         // Update the UI
         stopButton.hidden = false
@@ -60,6 +66,21 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         audioRecorder.record()
     }
     
+    @IBAction func stopAudio(sender: UIButton) {
+        recordingInProgress.hidden = true
+        audioRecorder.stop()
+        let audioSession = AVAudioSession.sharedInstance();
+        do {
+            try audioSession.setActive(false)
+        } catch _ {
+        }
+        
+        // This function stops the audio. We will then wait to hear back from the recorder,
+        // through the audioRecorderDidFinishRecording method
+    }
+    
+    // MARK: Audio Finished Recording
+    
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
 
         if flag {
@@ -72,6 +93,8 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         }
     }
     
+    // MARK: Segue
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 
         if segue.identifier == "stopRecording" {
@@ -80,18 +103,4 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
             playSoundsVC.receivedAudio = data
         }
     }
-    
-    @IBAction func stopAudio(sender: UIButton) {
-        recordingInProgress.hidden = true
-        audioRecorder.stop()
-        let audioSession = AVAudioSession.sharedInstance();
-        do {
-            try audioSession.setActive(false)
-        } catch _ {
-        }
-        
-        // This function stops the audio. We will then wait to hear back from the recorder, 
-        // through the audioRecorderDidFinishRecording method
-    }
 }
-

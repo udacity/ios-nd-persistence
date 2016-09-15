@@ -9,28 +9,30 @@
 import Foundation
 import CoreData
 
+// MARK: - Note: NSManagedObject
 
 class Note: NSManagedObject {
-
-
-    convenience init(text: String = "New Note",  context : NSManagedObjectContext){
+    
+    // MARK: Initializer
+    
+    convenience init(text: String = "New Note", context: NSManagedObjectContext) {
         
         // An EntityDescription is an object that has access to all
         // the information you provided in the Entity part of the model
         // you need it to create an instance of this class.
-        if let ent = NSEntityDescription.entityForName("Note",
-                                                       inManagedObjectContext: context){
+        if let ent = NSEntityDescription.entityForName("Note", inManagedObjectContext: context) {
             self.init(entity: ent, insertIntoManagedObjectContext: context)
             self.text = text
             self.creationDate = NSDate()
-        }else{
+        } else {
             fatalError("Unable to find Entity name!")
         }
-
     }
+    
+    // MARK: Computed Property
 
-    var humanReadableAge : String{
-        get{
+    var humanReadableAge: String {
+        get {
             let fmt = NSDateFormatter()
             fmt.timeStyle = .NoStyle
             fmt.dateStyle = .ShortStyle
@@ -39,6 +41,5 @@ class Note: NSManagedObject {
             
             return fmt.stringFromDate(creationDate!)
         }
-    }
-    
+    }    
 }
