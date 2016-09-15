@@ -9,19 +9,25 @@
 import UIKit
 import AVFoundation
 
+// MARK: - PlaySoundsViewController: UIViewController
+
 class PlaySoundsViewController: UIViewController {
+
+    // MARK: Properties
     
     let SliderValueKey = "Slider Value Key"
-    
     var audioPlayer:AVAudioPlayer!
     var receivedAudio:RecordedAudio!
-    
     var audioEngine:AVAudioEngine!
     var audioFile:AVAudioFile!
+    
+    // MARK: Outlets
     
     @IBOutlet weak var sliderView: UISlider!
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
+    
+    // MARK: Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,12 +49,16 @@ class PlaySoundsViewController: UIViewController {
         setUserInterfaceToPlayMode(false)
     }
     
+    // MARK: Set Interface
+    
     func setUserInterfaceToPlayMode(_ isPlayMode: Bool) {
         startButton.isHidden = isPlayMode
         stopButton.isHidden = !isPlayMode
         sliderView.isEnabled = !isPlayMode
     }
 
+    // MARK: Actions
+    
     @IBAction func playAudio(_ sender: UIButton) {
         
         // Get the pitch from the slider
@@ -67,6 +77,12 @@ class PlaySoundsViewController: UIViewController {
         audioEngine.stop()
         audioEngine.reset()
     }
+    
+    @IBAction func sliderDidMove(_ sender: UISlider) {
+        print("Slider vaue: \(sliderView.value)")
+    }
+    
+    // MARK: Play Audio
     
     func playAudioWithVariablePitch(_ pitch: Float){
         audioPlayer.stop()
@@ -94,9 +110,5 @@ class PlaySoundsViewController: UIViewController {
         }
         
         audioPlayerNode.play()
-    }
-    
-    @IBAction func sliderDidMove(_ sender: UISlider) {
-        print("Slider vaue: \(sliderView.value)")
     }
 }

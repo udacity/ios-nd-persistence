@@ -9,19 +9,23 @@
 import UIKit
 import AVFoundation
 
+// MARK: - RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate
+
 class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
 
-    @IBOutlet weak var recordingInProgress: UILabel!
-    @IBOutlet weak var stopButton: UIButton!
-    @IBOutlet weak var recordButton: UIButton!
+    // MARK: Properties
     
     var audioRecorder:AVAudioRecorder!
     var recordedAudio:RecordedAudio!
     var shouldSegueToSoundPlayer = false
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+    // MARK: Outlets
+    
+    @IBOutlet weak var recordingInProgress: UILabel!
+    @IBOutlet weak var stopButton: UIButton!
+    @IBOutlet weak var recordButton: UIButton!
+    
+    // MARK: Life Cycle
     
     override func viewWillAppear(_ animated: Bool) {
         //Hide the stop button
@@ -29,6 +33,8 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         recordButton.isEnabled = true
     }
 
+    // MARK: Actions
+    
     @IBAction func recordAudio(_ sender: UIButton) {
         // Update the UI
         stopButton.isHidden = false
@@ -60,6 +66,21 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         audioRecorder.record()
     }
     
+    @IBAction func stopAudio(_ sender: UIButton) {
+        recordingInProgress.isHidden = true
+        audioRecorder.stop()
+        let audioSession = AVAudioSession.sharedInstance();
+        do {
+            try audioSession.setActive(false)
+        } catch _ {
+        }
+        
+        // This function stops the audio. We will then wait to hear back from the recorder,
+        // through the audioRecorderDidFinishRecording method
+    }
+    
+    // MARK: Audio Recorded
+    
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
 
         if flag {
@@ -71,27 +92,16 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
             stopButton.isHidden = true
         }
     }
+
+    // MARK: Segue
     
-    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
         if segue.identifier == "stopRecording" {
-            let playSoundsVC:PlaySoundsViewController = segue.destinationViewController as! PlaySoundsViewController
+            let playSoundsVC:PlaySoundsViewController = segue.destination as! PlaySoundsViewController
             let data = recordedAudio
             playSoundsVC.receivedAudio = data
         }
-    }
-    
-    @IBAction func stopAudio(_ sender: UIButton) {
-        recordingInProgress.isHidden = true
-        audioRecorder.stop()
-        let audioSession = AVAudioSession.sharedInstance();
-        do {
-            try audioSession.setActive(false)
-        } catch _ {
-        }
-        
-        // This function stops the audio. We will then wait to hear back from the recorder, 
-        // through the audioRecorderDidFinishRecording method
     }
 }
 
