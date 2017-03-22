@@ -14,13 +14,13 @@ class NotesViewController: CoreDataTableViewController {
 
     // MARK: TableView Data Source
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // Get the note
-        let note = fetchedResultsController?.objectAtIndexPath(indexPath) as! Note
+        let note = fetchedResultsController?.object(at: indexPath) as! Note
         
         // Get the cell
-        let cell = tableView.dequeueReusableCellWithIdentifier("Note", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Note", for: indexPath)
         
         // Sync note -> cell
         cell.textLabel?.text = note.text

@@ -13,12 +13,12 @@ struct CoreDataStack {
     
     // MARK: Properties
     
-    private let model: NSManagedObjectModel
-    private let coordinator: NSPersistentStoreCoordinator
-    private let modelURL: NSURL
-    private let dbURL: NSURL
-    private let persistingContext: NSManagedObjectContext
-    private let backgroundContext: NSManagedObjectContext
+    fileprivate let model: NSManagedObjectModel
+    fileprivate let coordinator: NSPersistentStoreCoordinator
+    fileprivate let modelURL: URL
+    fileprivate let dbURL: URL
+    fileprivate let persistingContext: NSManagedObjectContext
+    fileprivate let backgroundContext: NSManagedObjectContext
     let context: NSManagedObjectContext
     
     // MARK: Initializers
@@ -26,14 +26,14 @@ struct CoreDataStack {
     init?(modelName: String) {
         
         // Assumes the model is in the main bundle
-        guard let modelURL = NSBundle.mainBundle().URLForResource(modelName, withExtension: "momd") else {
+        guard let modelURL = Bundle.main.url(forResource: modelName, withExtension: "momd") else {
             print("Unable to find \(modelName)in the main bundle")
             return nil
         }
         self.modelURL = modelURL
         
         // Try to create the model from the URL
-        guard let model = NSManagedObjectModel(contentsOfURL: modelURL) else {
+        guard let model = NSManagedObjectModel(contentsOf: modelURL) else {
             print("unable to create a model from \(modelURL)")
             return nil
         }
@@ -44,25 +44,25 @@ struct CoreDataStack {
         
         // Create a persistingContext (private queue) and a child one (main queue)
         // create a context and add connect it to the coordinator
-        persistingContext = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
+        persistingContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         persistingContext.persistentStoreCoordinator = coordinator
         
-        context = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
-        context.parentContext = persistingContext
+        context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+        context.parent = persistingContext
         
         // Create a background context child of main context
-        backgroundContext = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
-        backgroundContext.parentContext = context
+        backgroundContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        backgroundContext.parent = context
         
         // Add a SQLite store located in the documents folder
-        let fm = NSFileManager.defaultManager()
+        let fm = FileManager.default
         
-        guard let docUrl = fm.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first else {
+        guard let docUrl = fm.urls(for: .documentDirectory, in: .userDomainMask).first else {
             print("Unable to reach the documents folder")
             return nil
         }
         
-        self.dbURL = docUrl.URLByAppendingPathComponent("model.sqlite")!
+        self.dbURL = docUrl.appendingPathComponent("model.sqlite")
         
         // Options for migration
         let options = [NSInferMappingModelAutomaticallyOption: true,NSMigratePersistentStoresAutomaticallyOption: true]
@@ -76,8 +76,8 @@ struct CoreDataStack {
     
     // MARK: Utils
     
-    func addStoreCoordinator(storeType: String, configuration: String?, storeURL: NSURL, options : [NSObject : AnyObject]?) throws {
-        try coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: dbURL, options: nil)
+    func addStoreCoordinator(_ storeType: String, configuration: String?, storeURL: URL, options : [AnyHashable: Any]?) throws {
+        try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: dbURL, options: nil)
     }
 }
 
@@ -88,7 +88,7 @@ extension CoreDataStack  {
     func dropAllData() throws {
         // delete all the objects in the db. This won't delete the files, it will
         // just leave empty tables.
-        try coordinator.destroyPersistentStoreAtURL(dbURL, withType:NSSQLiteStoreType , options: nil)
+        try coordinator.destroyPersistentStore(at: dbURL, ofType:NSSQLiteStoreType , options: nil)
         try addStoreCoordinator(NSSQLiteStoreType, configuration: nil, storeURL: dbURL, options: nil)
     }
 }
@@ -97,12 +97,12 @@ extension CoreDataStack  {
 
 extension CoreDataStack {
     
-    typealias Batch = (workerContext: NSManagedObjectContext) -> ()
+    typealias Batch = (_ workerContext: NSManagedObjectContext) -> ()
     
-    func performBackgroundBatchOperation(batch: Batch) {
+    func performBackgroundBatchOperation(_ batch: @escaping Batch) {
         
-        backgroundContext.performBlock() {
-            batch(workerContext: self.backgroundContext)
+        backgroundContext.perform() {
+            batch(self.backgroundContext)
             
             // Save it to the parent context, so normal saving
             // can work
@@ -125,7 +125,7 @@ extension CoreDataStack {
         // when it ends so we can call the next save (on the persisting
         // context). This last one might take some time and is done
         // in a background queue
-        context.performBlockAndWait() {
+        context.performAndWait() {
             
             if self.context.hasChanges {
                 do {
@@ -135,7 +135,7 @@ extension CoreDataStack {
                 }
                 
                 // now we save in the background
-                self.persistingContext.performBlock() {
+                self.persistingContext.perform() {
                     do {
                         try self.persistingContext.save()
                     } catch {
@@ -146,16 +146,16 @@ extension CoreDataStack {
         }
     }
     
-    func autoSave(delayInSeconds: Int) {
+    func autoSave(_ delayInSeconds: Int) {
         
         if delayInSeconds > 0 {
             print("Autosaving")
             save()
             
             let delayInNanoSeconds = UInt64(delayInSeconds) * NSEC_PER_SEC
-            let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delayInNanoSeconds))
+            let time = DispatchTime.now() + Double(Int64(delayInNanoSeconds)) / Double(NSEC_PER_SEC)
             
-            dispatch_after(time, dispatch_get_main_queue()) {
+            DispatchQueue.main.asyncAfter(deadline: time) {
                 self.autoSave(delayInSeconds)
             }
         }

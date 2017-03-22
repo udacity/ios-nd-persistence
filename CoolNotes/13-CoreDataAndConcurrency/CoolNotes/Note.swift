@@ -20,10 +20,10 @@ class Note: NSManagedObject {
         // An EntityDescription is an object that has access to all
         // the information you provided in the Entity part of the model
         // you need it to create an instance of this class.
-        if let ent = NSEntityDescription.entityForName("Note", inManagedObjectContext: context) {
-            self.init(entity: ent, insertIntoManagedObjectContext: context)
+        if let ent = NSEntityDescription.entity(forEntityName: "Note", in: context) {
+            self.init(entity: ent, insertInto: context)
             self.text = text
-            self.creationDate = NSDate()
+            self.creationDate = Date()
         } else {
             fatalError("Unable to find Entity name!")
         }
@@ -33,13 +33,13 @@ class Note: NSManagedObject {
     
     var humanReadableAge: String {
         get {
-            let fmt = NSDateFormatter()
-            fmt.timeStyle = .NoStyle
-            fmt.dateStyle = .ShortStyle
+            let fmt = DateFormatter()
+            fmt.timeStyle = .none
+            fmt.dateStyle = .short
             fmt.doesRelativeDateFormatting = true
-            fmt.locale = NSLocale.currentLocale()
+            fmt.locale = Locale.current
             
-            return fmt.stringFromDate(creationDate!)
+            return fmt.string(from: creationDate! as Date)
         }
     }
 }

@@ -20,10 +20,10 @@ class Notebook: NSManagedObject {
         // An EntityDescription is an object that has access to all
         // the information you provided in the Entity part of the model
         // you need it to create an instance of this class.
-        if let ent = NSEntityDescription.entityForName("Notebook", inManagedObjectContext: context) {
-            self.init(entity: ent, insertIntoManagedObjectContext: context)
+        if let ent = NSEntityDescription.entity(forEntityName: "Notebook", in: context) {
+            self.init(entity: ent, insertInto: context)
             self.name = name;
-            self.creationDate = NSDate()
+            self.creationDate = Date()
         } else {
             fatalError("Unable to find Entity name!")
         }

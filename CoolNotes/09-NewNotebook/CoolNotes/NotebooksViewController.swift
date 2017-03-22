@@ -22,11 +22,11 @@ class NotebooksViewController: CoreDataTableViewController {
         title = "CoolNotes"
         
         // Get the stack
-        let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let delegate = UIApplication.shared.delegate as! AppDelegate
         let stack = delegate.stack
         
         // Create a fetchrequest
-        let fr = NSFetchRequest(entityName: "Notebook")
+        let fr = NSFetchRequest<NSFetchRequestResult>(entityName: "Notebook")
         fr.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true), NSSortDescriptor(key: "creationDate", ascending: false)]
         
         // Create the FetchedResultsController
@@ -35,7 +35,7 @@ class NotebooksViewController: CoreDataTableViewController {
     
     // MARK: Actions
     
-    @IBAction func addNewNotebook(sender: AnyObject) {
+    @IBAction func addNewNotebook(_ sender: AnyObject) {
         
         // Create a new notebook... and Core Data takes care of the rest!
         let nb = Notebook(name: "New Notebook", context: fetchedResultsController!.managedObjectContext)
@@ -44,17 +44,17 @@ class NotebooksViewController: CoreDataTableViewController {
     
     // MARK: TableView Data Source
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // This method must be implemented by our subclass. There's no way
         // CoreDataTableViewController can know what type of cell we want to
         // use.
         
         // Find the right notebook for this indexpath
-        let nb = fetchedResultsController!.objectAtIndexPath(indexPath) as! Notebook
+        let nb = fetchedResultsController!.object(at: indexPath) as! Notebook
         
         // Create the cell
-        let cell = tableView.dequeueReusableCellWithIdentifier("NotebookCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NotebookCell", for: indexPath)
         
         // Sync notebook -> cell
         cell.textLabel?.text = nb.name

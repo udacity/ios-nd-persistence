@@ -22,11 +22,11 @@ class NotebooksViewController: CoreDataTableViewController {
         title = "CoolNotes"
         
         // Get the stack
-        let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let delegate = UIApplication.shared.delegate as! AppDelegate
         let stack = delegate.stack
         
         // Create a fetchrequest
-        let fr = NSFetchRequest(entityName: "Notebook")
+        let fr = NSFetchRequest<NSFetchRequestResult>(entityName: "Notebook")
         fr.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true), NSSortDescriptor(key: "creationDate", ascending: false)]
         
         // Create the FetchedResultsController
@@ -35,7 +35,7 @@ class NotebooksViewController: CoreDataTableViewController {
     
     // MARK: Actions
     
-    @IBAction func addNewNotebook(sender: AnyObject) {
+    @IBAction func addNewNotebook(_ sender: AnyObject) {
         
         // Create a new notebook... and Core Data takes care of the rest!
         let nb = Notebook(name: "New Notebook", context: fetchedResultsController!.managedObjectContext)
@@ -44,17 +44,17 @@ class NotebooksViewController: CoreDataTableViewController {
     
     // MARK: TableView Data Source
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // This method must be implemented by our subclass. There's no way
         // CoreDataTableViewController can know what type of cell we want to
         // use.
         
         // Find the right notebook for this indexpath
-        let nb = fetchedResultsController!.objectAtIndexPath(indexPath) as! Notebook
+        let nb = fetchedResultsController!.object(at: indexPath) as! Notebook
         
         // Create the cell
-        let cell = tableView.dequeueReusableCellWithIdentifier("NotebookCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NotebookCell", for: indexPath)
         
         // Sync notebook -> cell
         cell.textLabel?.text = nb.name
@@ -63,27 +63,27 @@ class NotebooksViewController: CoreDataTableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
-        if let context = fetchedResultsController?.managedObjectContext, noteBook = fetchedResultsController?.objectAtIndexPath(indexPath) as? Notebook where editingStyle == .Delete {
-            context.deleteObject(noteBook)
+        if let context = fetchedResultsController?.managedObjectContext, let noteBook = fetchedResultsController?.object(at: indexPath) as? Notebook, editingStyle == .delete {
+            context.delete(noteBook)
         }
     }
     
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
         if segue.identifier! == "displayNote" {
             
-            if let notesVC = segue.destinationViewController as? NotesViewController {
+            if let notesVC = segue.destination as? NotesViewController {
                 
                 // Create Fetch Request
-                let fr = NSFetchRequest(entityName: "Note")
+                let fr = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
                 
                 fr.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false), NSSortDescriptor(key: "text", ascending: true)]
                 
@@ -91,7 +91,7 @@ class NotebooksViewController: CoreDataTableViewController {
                 // only interested in those within the current notebook:
                 // NSPredicate to the rescue!
                 let indexPath = tableView.indexPathForSelectedRow!
-                let notebook = fetchedResultsController?.objectAtIndexPath(indexPath) as? Notebook
+                let notebook = fetchedResultsController?.object(at: indexPath) as? Notebook
                 
                 let pred = NSPredicate(format: "notebook = %@", argumentArray: [notebook!])
                 
