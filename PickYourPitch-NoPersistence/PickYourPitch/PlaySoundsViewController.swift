@@ -33,7 +33,7 @@ class PlaySoundsViewController: UIViewController {
         super.viewDidLoad()
         
         do {
-            audioPlayer = try AVAudioPlayer(contentsOfURL: receivedAudio.filePathUrl)
+            audioPlayer = try AVAudioPlayer(contentsOf: receivedAudio.filePathUrl as URL)
         } catch _ {
             audioPlayer = nil
         }
@@ -41,7 +41,7 @@ class PlaySoundsViewController: UIViewController {
 
         audioEngine = AVAudioEngine()
         do {
-            audioFile = try AVAudioFile(forReading: receivedAudio.filePathUrl)
+            audioFile = try AVAudioFile(forReading: receivedAudio.filePathUrl as URL)
         } catch _ {
             audioFile = nil
         }
@@ -49,15 +49,15 @@ class PlaySoundsViewController: UIViewController {
         setUserInterfaceToPlayMode(false)
     }
     
-    func setUserInterfaceToPlayMode(isPlayMode: Bool) {
-        startButton.hidden = isPlayMode
-        stopButton.hidden = !isPlayMode
-        sliderView.enabled = !isPlayMode
+    func setUserInterfaceToPlayMode(_ isPlayMode: Bool) {
+        startButton.isHidden = isPlayMode
+        stopButton.isHidden = !isPlayMode
+        sliderView.isEnabled = !isPlayMode
     }
 
     // MARK: Actions
     
-    @IBAction func playAudio(sender: UIButton) {
+    @IBAction func playAudio(_ sender: UIButton) {
         
         // Get the pitch from the slider
         let pitch = sliderView.value
@@ -70,36 +70,36 @@ class PlaySoundsViewController: UIViewController {
         
     }
     
-    @IBAction func stopAudio(sender: UIButton) {
+    @IBAction func stopAudio(_ sender: UIButton) {
         audioPlayer.stop()
         audioEngine.stop()
         audioEngine.reset()
     }
     
-    @IBAction func sliderDidMove(sender: UISlider) {
+    @IBAction func sliderDidMove(_ sender: UISlider) {
         print("Slider vaue: \(sliderView.value)")
     }
     
     // MARK: Play Audio
     
-    func playAudioWithVariablePitch(pitch: Float){
+    func playAudioWithVariablePitch(_ pitch: Float){
         audioPlayer.stop()
         audioEngine.stop()
         audioEngine.reset()
         
         let audioPlayerNode = AVAudioPlayerNode()
-        audioEngine.attachNode(audioPlayerNode)
+        audioEngine.attach(audioPlayerNode)
         
         let changePitchEffect = AVAudioUnitTimePitch()
         changePitchEffect.pitch = pitch
-        audioEngine.attachNode(changePitchEffect)
+        audioEngine.attach(changePitchEffect)
         
         audioEngine.connect(audioPlayerNode, to: changePitchEffect, format: nil)
         audioEngine.connect(changePitchEffect, to: audioEngine.outputNode, format: nil)
         
-        audioPlayerNode.scheduleFile(audioFile, atTime: nil) {
+        audioPlayerNode.scheduleFile(audioFile, at: nil) {
             // When the audio completes, set the user interface on the main thread
-            dispatch_async(dispatch_get_main_queue()) {self.setUserInterfaceToPlayMode(false) }
+            DispatchQueue.main.async {self.setUserInterfaceToPlayMode(false) }
         }
         
         do {

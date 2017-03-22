@@ -14,6 +14,6 @@ struct RecordedAudio {
 
     // MARK: Properties
     
-    var filePathUrl: NSURL!
+    var filePathUrl: URL!
     var title: String!
 }
