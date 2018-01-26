@@ -8,7 +8,7 @@ This repository contains resources for Udacity's iOS Persistence and Core Data c
 
 ## Overview
 
-iOS Persistence and Core Data teach common persistence techniques using Apple's frameworks. The course includes one-off examples like PickYourPitch and the SandboxPlayground, but the main case-study is the CoolNotes app. CoolNotes is a simple clone of the standard Notes app that comes pre-installed on iOS.
+iOS Persistence and Core Data teach common persistence techniques using Apple's frameworks. The course includes one-off examples like PickYourPitch and the SandboxPlayground, but the main case-study is the Mooskine app.
 
 ## Setup
 
@@ -16,4 +16,4 @@ Generally speaking, most projects can run without any additional setup. However,
 
 ## Maintainers
 
-@frr149
+@batmanimal
