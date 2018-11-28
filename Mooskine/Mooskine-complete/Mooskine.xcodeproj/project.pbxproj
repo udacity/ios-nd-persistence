@@ -257,13 +257,13 @@
 					039B10571EDC5469002EA94F = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 8RNGB2AAZL;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = "";
 						ProvisioningStyle = Automatic;
 					};
 					039B106B1EDC5469002EA94F = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 8RNGB2AAZL;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = "";
 						ProvisioningStyle = Automatic;
 						TestTargetID = 039B10571EDC5469002EA94F;
 					};
@@ -517,6 +517,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 8RNGB2AAZL;
 				INFOPLIST_FILE = MooskineTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.udacity.MooskineTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -533,6 +534,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 8RNGB2AAZL;
 				INFOPLIST_FILE = MooskineTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.udacity.MooskineTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
