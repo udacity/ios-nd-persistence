@@ -133,7 +133,7 @@ extension NoteDetailsViewController {
     
     @IBAction func redTapped(sender: Any) {
         let newText = textView.attributedText.mutableCopy() as! NSMutableAttributedString
-        let attributes: [NSAttributedStringKey: Any] = [
+        let attributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: UIColor.red,
             .underlineStyle: 1,
             .underlineColor: UIColor.red

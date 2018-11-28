@@ -18,7 +18,7 @@ internal struct Pathifier {
         
         // Apply the supplied font
         let text = NSMutableAttributedString(string: attributedString.string)
-        text.addAttribute(NSAttributedStringKey.font, value: font, range: NSMakeRange(0, text.length))
+        text.addAttribute(NSAttributedString.Key.font, value: font, range: NSMakeRange(0, text.length))
         
         // Create a NSLayoutManager to generate the glyphs
         let layoutManager = NSLayoutManager()
