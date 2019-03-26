@@ -58,7 +58,7 @@ class NotebooksListViewController: UIViewController, UITableViewDataSource {
         // Add a text field
         alert.addTextField { textField in
             textField.placeholder = "Name"
-            NotificationCenter.default.addObserver(forName: .UITextFieldTextDidChange, object: textField, queue: .main) { notif in
+            NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: textField, queue: .main) { notif in
                 if let text = textField.text, !text.isEmpty {
                     saveAction.isEnabled = true
                 } else {
@@ -122,7 +122,7 @@ class NotebooksListViewController: UIViewController, UITableViewDataSource {
         return cell
     }
 
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         switch editingStyle {
         case .delete: deleteNotebook(at: indexPath)
         default: () // Unsupported

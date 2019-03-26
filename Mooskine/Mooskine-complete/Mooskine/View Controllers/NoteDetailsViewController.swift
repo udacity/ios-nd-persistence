@@ -128,7 +128,7 @@ extension NoteDetailsViewController {
         textView.attributedText = newText
         textView.selectedTextRange = selectedTextRange
         note.attributedText = textView.attributedText
-        try? dataController?.viewContext.save()
+        ((try? dataController?.viewContext.save()) as ()??)
     }
     
     @IBAction func redTapped(sender: Any) {
