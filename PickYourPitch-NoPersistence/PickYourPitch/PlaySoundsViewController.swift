@@ -79,7 +79,7 @@ class PlaySoundsViewController: UIViewController {
     }
     
     @IBAction func sliderDidMove(_ sender: UISlider) {
-        print("Slider vaue: \(sliderView.value)")
+        print("Slider value: \(sliderView.value)")
     }
     
     // MARK: Play Audio
